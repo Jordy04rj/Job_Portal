@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        body {
+   font-family: Arial, sans-serif;
+   background-color: #f5f5f5;
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   width: 80%;
+   margin: auto;
+   padding: 20px;
+   background-color: #fff;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   margin-top: 30px;
+   border-radius: 8px;
+}
+
+h1, h2 {
+   text-align: center;
+   color: #333;
+}
+
+.input {
+   width: 100%;
+   padding: 8px;
+   margin: 10px 0;
+   box-sizing: border-box;
+}
+
+.btn {
+   padding: 10px 20px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   cursor: pointer;
+   margin-top: 10px;
+   border-radius: 4px;
+}
+
+.btn:hover {
+   background-color: #45a049;
+}
+
+.btn-primary {
+   background-color: #2196F3;
+}
+
+.btn-primary:hover {
+   background-color: #0b7dda;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+table, th, td {
+   border: 1px solid #ccc;
+}
+
+th, td {
+   padding: 10px;
+   text-align: left;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Register</h1>
+    <form th:action="@{/register}" method="post" th:object="${user}">
+        <label>Username:</label>
+        <input type="text" th:field="*{username}" class="input"/><br/>
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" class="input"/><br/>
+        <label>Role:</label>
+        <select th:field="*{role}" class="input">
+            <option value="EMPLOYER">Employer</option>
+            <option value="APPLICANT">Applicant</option>
+        </select><br/>
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+   font-family: Arial, sans-serif;
+   background-color: #f5f5f5;
+   margin: 0;
+   padding: 0;
+}
+
+.container {
+   width: 80%;
+   margin: auto;
+   padding: 20px;
+   background-color: #fff;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   margin-top: 30px;
+   border-radius: 8px;
+}
+
+h1, h2 {
+   text-align: center;
+   color: #333;
+}
+
+.input {
+   width: 100%;
+   padding: 8px;
+   margin: 10px 0;
+   box-sizing: border-box;
+}
+
+.btn {
+   padding: 10px 20px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   cursor: pointer;
+   margin-top: 10px;
+   border-radius: 4px;
+}
+
+.btn:hover {
+   background-color: #45a049;
+}
+
+.btn-primary {
+   background-color: #2196F3;
+}
+
+.btn-primary:hover {
+   background-color: #0b7dda;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+}
+
+table, th, td {
+   border: 1px solid #ccc;
+}
+
+th, td {
+   padding: 10px;
+   text-align: left;
+}
+    </style>
+    <title>Post Job</title>
+</head>
+<body>
+<div class="container">
+    <h1>Post a Job</h1>
+    <form th:action="@{/employer/jobs}" method="post" th:object="${job}">
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" class="input"/><br/>
+        <label>Description:</label>
+        <textarea th:field="*{description}" class="input"></textarea><br/>
+        <label>Location:</label>
+        <input type="text" th:field="*{location}" class="input"/><br/>
+        <button type="submit" class="btn">Post</button>
+    </form>
+    <h2>Your Jobs</h2>
+    <table>
+        <thead>
+        <tr><th>Title</th><th>Location</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="job : ${jobs}">
+            <td th:text="${job.title}"></td>
+            <td th:text="${job.location}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
